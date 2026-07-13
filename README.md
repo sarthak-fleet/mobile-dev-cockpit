@@ -122,6 +122,6 @@ pnpm mobile:export:ios
 ```
 
 `expo prebuild --platform ios --no-install` can generate the native project. A physical-device build still requires full Xcode and CocoaPods on the Mac.
-Every push also performs a clean native prebuild, pod install, and unsigned iOS Simulator compile on Xcode 26.4 in GitHub Actions.
+Every push also performs a clean native prebuild, pod install, and unsigned Release compile on Xcode 26.4 in GitHub Actions. CI then installs the standalone app in an iPhone simulator, launches it without Metro, and uploads a screenshot of the rendered onboarding screen.
 
 The feature contract and progress live in `openspec/changes/build-mobile-dev-cockpit-mvp/` until the MVP is fully verified and archived.

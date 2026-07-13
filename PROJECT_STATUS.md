@@ -35,6 +35,7 @@ Mobile Dev Cockpit is a native iPhone interface for supervising development on a
 - 2026-07-13 — Re-ran 390x844 end-to-end smoke tests through pairing, dev process lifecycle, PTY resume/instruction/stop, guarded deployment, refreshed embedded production preview, and credential cleanup with no browser errors. Workspace checks pass; web and iOS exports pass; native prebuild succeeds. Expo Doctor is 19/20 because CocoaPods is absent.
 - 2026-07-13 — Added Tailscale-first onboarding and a loopback-only Tailscale Serve CLI mode with scoped setup/cleanup, MagicDNS WSS output, unsafe-binding rejection, and tests. Polished the iPhone onboarding and dashboard using local React Native primitives and visually verified both secure and local modes at 390x844.
 - 2026-07-13 — Added a clean hosted native build gate: Expo prebuild, CocoaPods installation, and the complete unsigned iOS Simulator app compile and link pass on Xcode 26.4 alongside the existing 34 tests, bridge build, and platform exports.
+- 2026-07-13 — Upgraded the native gate to a standalone Release build, fixed React Native workspace resolution for the shared protocol, installed and launched the bundled app in an iPhone simulator without Metro, and visually verified the uploaded native onboarding screenshot.
 
 ## Products
 
@@ -58,6 +59,7 @@ Mobile Dev Cockpit is a native iPhone interface for supervising development on a
 - Polished Tailscale-first onboarding, encrypted/development transport states, three-step setup rail, trusted-machine status, and dense project cards built without another UI dependency.
 - Expo web fallback used for 390x844 visual verification and local end-to-end smoke testing; generated iOS native project and both platform bundles verified locally.
 - Clean macOS 26 CI compilation of the generated native app, including all Expo/React Native pods, with the SDK 57-required Xcode 26.4 toolchain.
+- Standalone Release simulator installation and launch gate with a visually inspected full-resolution native onboarding screenshot artifact.
 
 ## Todo / Planned / Deferred / Blocked
 
