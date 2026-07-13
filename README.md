@@ -15,7 +15,7 @@ An iPhone cockpit for a developer-controlled machine: pair once, choose an allow
 
 ## Setup
 
-Requirements: Node.js 22+, pnpm 10, Git, and an Expo-compatible iOS development environment.
+Requirements: Node.js 22+, pnpm 10, Git, and an Expo-compatible iOS development environment. Expo SDK 57 native builds require Xcode 26.4+ and CocoaPods.
 
 ```bash
 pnpm install
@@ -122,5 +122,6 @@ pnpm mobile:export:ios
 ```
 
 `expo prebuild --platform ios --no-install` can generate the native project. A physical-device build still requires full Xcode and CocoaPods on the Mac.
+Every push also performs a clean native prebuild, pod install, and unsigned iOS Simulator compile on Xcode 26.4 in GitHub Actions.
 
 The feature contract and progress live in `openspec/changes/build-mobile-dev-cockpit-mvp/` until the MVP is fully verified and archived.

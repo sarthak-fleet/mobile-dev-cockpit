@@ -17,6 +17,7 @@ Mobile Dev Cockpit is a native iPhone interface for supervising development on a
 ### External
 
 - Expo SDK 57, React Native, Expo Router, SecureStore, WebView, view capture, and system sharing.
+- Xcode 26.4+ and CocoaPods for native iOS builds; the hosted simulator compile uses GitHub's macOS 26 runner.
 - Node.js 22+, the `ws` WebSocket server package, and `node-pty` for owned interactive agent sessions.
 - Git and whichever dev, test, agent, and deploy CLIs a user explicitly configures.
 - Optional Tailscale CLI and a signed-in tailnet for the recommended private HTTPS remote transport; LAN or another TLS reverse proxy remains supported.
@@ -33,6 +34,7 @@ Mobile Dev Cockpit is a native iPhone interface for supervising development on a
 - 2026-07-13 — Closed the remaining host-independent PRD gaps: expiring sessions and cold-launch reconnect, build/tunnel controls, PTY-backed new/resume agent sessions, complete process-group shutdown, stale Git approval rejection, private screenshot-to-agent delivery, compiled bridge CLI, and CLI packaging verification.
 - 2026-07-13 — Re-ran 390x844 end-to-end smoke tests through pairing, dev process lifecycle, PTY resume/instruction/stop, guarded deployment, refreshed embedded production preview, and credential cleanup with no browser errors. Workspace checks pass; web and iOS exports pass; native prebuild succeeds. Expo Doctor is 19/20 because CocoaPods is absent.
 - 2026-07-13 — Added Tailscale-first onboarding and a loopback-only Tailscale Serve CLI mode with scoped setup/cleanup, MagicDNS WSS output, unsafe-binding rejection, and tests. Polished the iPhone onboarding and dashboard using local React Native primitives and visually verified both secure and local modes at 390x844.
+- 2026-07-13 — Added a clean hosted native build gate: Expo prebuild, CocoaPods installation, and the complete unsigned iOS Simulator app compile and link pass on Xcode 26.4 alongside the existing 34 tests, bridge build, and platform exports.
 
 ## Products
 
@@ -55,9 +57,10 @@ Mobile Dev Cockpit is a native iPhone interface for supervising development on a
 - Compiled bridge CLI with an executable package entrypoint and reproducible native PTY helper preparation.
 - Polished Tailscale-first onboarding, encrypted/development transport states, three-step setup rail, trusted-machine status, and dense project cards built without another UI dependency.
 - Expo web fallback used for 390x844 visual verification and local end-to-end smoke testing; generated iOS native project and both platform bundles verified locally.
+- Clean macOS 26 CI compilation of the generated native app, including all Expo/React Native pods, with the SDK 57-required Xcode 26.4 toolchain.
 
 ## Todo / Planned / Deferred / Blocked
 
-1. Blocked: compile/install and validate WKWebView, Keychain persistence, screenshot sharing, orientation, and reconnect on a physical iPhone; this Mac has Command Line Tools only, no full Xcode installation, and no CocoaPods.
+1. Blocked: install and validate WKWebView, Keychain persistence, screenshot sharing, orientation, and reconnect on a physical iPhone; native compilation is proven in CI, but this Mac has Command Line Tools only, no full Xcode installation, and no CocoaPods.
 2. Deferred: hosted relay and account system, pending evidence that private Tailscale connectivity is insufficient.
 3. Deferred: App Store/TestFlight distribution decision, pending physical-device validation and policy review.
